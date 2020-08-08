@@ -7,12 +7,11 @@ import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import org.slf4j.Logger;
-import red.rainbow.rainbowhelp.CmdExecFollower;
 
 @Plugin(
         id = "help",
         name = "RainbowHelp",
-        version = "1.0",
+        version = "1.1",
         description = "Provides /help command.",
         url = "https://rainbow.red",
         authors = {"RainbowSpeedy"}
@@ -32,7 +31,7 @@ public class Help {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
-        server.getEventManager().register(this, new CmdExecFollower());
+        server.getEventManager().register(this, new CmdExec());
         logger.info("RainbowHelp online.");
     }
 }

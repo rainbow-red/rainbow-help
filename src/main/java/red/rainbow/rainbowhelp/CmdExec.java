@@ -3,22 +3,27 @@ package red.rainbow.rainbowhelp;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.command.CommandExecuteEvent;
+import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.TextComponent;
 
 import java.util.Arrays;
 
 import static red.rainbow.rainbowhelp.StringProvider.*;
 
-public class CmdExecFollower {
+public class CmdExec {
 
     CommandExecuteEvent.CommandResult result;
 
     @Subscribe
     public void onCommandExecution(CommandExecuteEvent event) {
+
         CommandSource source = event.getCommandSource();
+        if (!(source instanceof Player)) {
+            return;
+        }
+
         String[] args = event.getCommand().split(" ");
         String label = args[0];
-
         if (!label.equalsIgnoreCase("help")) {
             return;
         }
